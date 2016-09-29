@@ -15,6 +15,8 @@ import org.jboss.resteasy.client.ClientExecutor;
 import org.jboss.resteasy.client.ClientRequest;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.client.core.executors.ApacheHttpClient4Executor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -22,6 +24,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sinosoft.nagios.exception.NagiosException;
 
 public class NagiosMonitor {
+	private final Logger logger = LoggerFactory.getLogger(NagiosMonitor.class);
+	
 	private NagiosConfig config;
 	private ClientExecutor executor;
 
@@ -55,7 +59,7 @@ public class NagiosMonitor {
 		}
 		// int responseCode = response.getResponseStatus().getStatusCode();
 		String message = response.getEntity();
-		// System.out.println(message);
+		logger.debug(message);
  		
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode hostNode = null;

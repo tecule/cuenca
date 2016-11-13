@@ -59,7 +59,7 @@ public class NagiosMonitor {
 		}
 		// int responseCode = response.getResponseStatus().getStatusCode();
 		String message = response.getEntity();
-		logger.debug(message);
+		logger.trace(message);
  		
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode hostNode = null;
